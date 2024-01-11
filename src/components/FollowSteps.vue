@@ -221,7 +221,7 @@ export default {
     },
     data: () => ({
         profUrl: prof,
-        showStarterScreen: false,
+        showStarterScreen: true,
         shipping: 0,
         showReview: false,
         step: 1,
