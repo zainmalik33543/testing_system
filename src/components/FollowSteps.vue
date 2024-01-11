@@ -3,8 +3,8 @@
     <div v-else class="followSteps-outerMostDiv">
         <div class="followSteps-outerDiv">
             <div v-if="!showReview" class="flexWrapper-div">
-                <div class="headingWrapper" v-motion :initial="{ x: 100, opacity: 0 }"
-                    :enter="{ x: 0, opacity: 1, transition: { duration: 800, delay: 50, ease: 'easeInOut' } }">
+                <div class="headingWrapper" v-motion :initial="{ opacity: 0 }"
+                    :enter="{ opacity: 1, transition: { duration: 300, delay: 200, ease: 'easeIn' } }">
                     <p class="p-tags stepsHead">Follow the <span class="stepsHead-span">Steps</span></p>
                     <p class="p-tags stepsSubHead">Follow the required 4 steps to start your journey...</p>
                 </div>
@@ -30,7 +30,7 @@
                                     <!-- ===================== -->
                                     <v-stepper-window-item class="stepperScrollingWindow">
                                         <div v-motion :initial="{ opacity: 0 }"
-                                            :enter="{ opacity: 1, transition: { duration: 300, delay: 200, ease: 'easeIn' } }">
+                                            :enter="{ opacity: 1, transition: { duration: 300, delay: 400, ease: 'easeIn' } }">
                                             <div>
                                                 <p class="stepperFirstHead">Step <span
                                                         class="stepperFirstHead-txt">01</span>/05
@@ -221,7 +221,7 @@ export default {
     },
     data: () => ({
         profUrl: prof,
-        showStarterScreen: true,
+        showStarterScreen: false,
         shipping: 0,
         showReview: false,
         step: 1,
@@ -538,16 +538,45 @@ export default {
     display: none !important;
 }
 
-.v-stepper-item .v-avatar {
+.v-stepper-header .v-stepper-item .v-avatar {
     width: 49px !important;
     height: 49px !important;
     font-size: 0px !important;
-    background-image: url(../assets/imgs/profile.png) !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
 }
 
+.v-stepper-header .v-stepper-item:nth-child(1) .v-avatar {
+    background-image: url(../assets/imgs/profile.png) !important;
+}
+
+.v-stepper-header .v-stepper-item:nth-child(3) .v-avatar {
+    background-image: url(../assets/imgs/interviewer.png) !important;
+}
+
+.v-stepper-header .v-stepper-item:nth-child(5) .v-avatar {
+    background-image: url(../assets/imgs/position.png) !important;
+}
+
+.v-stepper-header .v-stepper-item:nth-child(7) .v-avatar {
+    background-image: url(../assets/imgs/experience.png) !important;
+}
+
+.v-stepper-header .v-stepper-item:nth-child(9) .v-avatar {
+    background-image: url(../assets/imgs/mail.svg) !important;
+}
+
 .v-stepper-item--selected .v-avatar {
-    background-color: #4B9AFA !important;
+    /* background-color: #4B9AFA !important; */
+    background: rgba(75, 154, 250, 0.8) !important;
+}
+
+.v-stepper-item .v-avatar {
+    background: rgba(75, 154, 250, 0.1);
+}
+
+.v-btn--disabled.v-btn--variant-elevated,
+.v-btn--disabled.v-btn--variant-flat {
+    opacity: 0.5;
 }
 </style>
