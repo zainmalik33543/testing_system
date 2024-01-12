@@ -1,10 +1,14 @@
 <template>
     <div class="testScreenContainer">
         <div v-if="!testCompleted" class="testScreen-wrapper">
-            <p class="testBannerTxt">Answer the following Questions</p>
+            <p v-motion :initial="{ opacity: 0 }"
+                :enter="{ opacity: 1, transition: { duration: 300, delay: 200, ease: 'easeIn' } }" class="testBannerTxt">
+                Answer the following Questions</p>
             <v-row>
                 <v-col cols="8">
-                    <p class="testSubTxt">Choose the right answer and click next or click skip if you don’t know the answer.
+                    <p class="testSubTxt" v-motion :initial="{ opacity: 0 }"
+                        :enter="{ opacity: 1, transition: { duration: 300, delay: 300, ease: 'easeIn' } }">Choose the right
+                        answer and click next or click skip if you don’t know the answer.
                     </p>
                 </v-col>
                 <v-col cols="4">
@@ -17,7 +21,9 @@
             </v-row>
             <v-divider class="testScreenDivider"></v-divider>
 
-            <h1 class="questionTest">{{ currentQuestion + 1 }}. {{ questions[currentQuestion].question }}</h1>
+            <h1 class="questionTest" v-motion :initial="{ opacity: 0 }"
+                :enter="{ opacity: 1, transition: { duration: 300, delay: 400, ease: 'easeIn' } }">{{ currentQuestion + 1
+                }}. {{ questions[currentQuestion].question }}</h1>
 
             <div class="optionsWrapper">
                 <v-radio-group v-model="selectedAnswer">
@@ -35,6 +41,7 @@
                     questions.length - 1 ? "Finished" :
                     "Next" }}</v-btn>
             </div>
+            <FooterCom class="positioningForTest"/>
         </div>
         <div v-else class="testScreen-wrapper">
             <div class="headingWrapper">
@@ -43,7 +50,7 @@
                         <p class="p-tags stepsHead">Final <span class="stepsHead-span">Result</span></p>
                         <p class="p-tags stepsSubHead">Your result and analytics</p>
                     </v-col>
-                    <v-col cols="6">
+                    <v-col cols="12" lg="6" md="12">
                         <div class="passedWrapper">
                             <!-- <p class="passed-failed">PASSED</p> -->
                             <img :src="down" class="download" />
@@ -52,26 +59,47 @@
                 </v-row>
             </div>
             <v-divider class="testScreenDivider"></v-divider>
-            <div class="chartSpan-DivHolder">
-                <div class="chartSpan">
-                    <Doughnut class="myChart" :data="chartConfig.data" :options="chartConfig.options"
-                        :plugins="chartConfig.plugins" />
-                    <span v-motion :initial="{ opacity: 0 }"
-                        :enter="{ opacity: 1, transition: { duration: 300, delay: 800, ease: 'easeIn' } }"
-                        class="chartPercentage">
-                        <p>60%</p>
-                    </span>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <div class="progress">
-                        <div class="correct"><span class="progressTxt">Correct</span></div>
-                        <div class="wrong"><span class="progressTxt">Wrong</span></div>
-                        <div class="skipped"><span class="progressTxt">Skipped</span></div>
+            <v-row>
+                <v-col cols="12" lg="6" md="12">
+                    <div class="chartSpan-DivHolder">
+                        <div class="chartSpan">
+                            <Doughnut class="myChart" :data="chartConfig.data" :options="chartConfig.options"
+                                :plugins="chartConfig.plugins" />
+                            <span class="chartPercentage" v-motion :initial="{ opacity: 0 }"
+                                :enter="{ opacity: 1, transition: { duration: 500, delay: 500, ease: 'easeInOut' } }">
+                                <p>60%</p>
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </v-col>
+                <v-col cols="12" lg="6" md="12" class="detailGraphCol">
+                    <div class="detailGraphHolder">
+                        <v-card class="progressCard">
+                            <div style="margin: 20px">
+                                <v-row class="progressWrapper">
+                                    <v-col cols="3"><span class="detailsHeadings">Correct</span></v-col>
+                                    <v-col class="progres-col"><v-progress-linear model-value="20"
+                                            color="#4B9AFA"></v-progress-linear></v-col>
+                                    <v-col cols="2"> <span class="marks">06/10</span></v-col>
+                                </v-row>
+                                <v-row class="progressWrapper">
+                                    <v-col cols="3"><span class="detailsHeadings">Wrong</span></v-col>
+                                    <v-col class="progres-col"><v-progress-linear model-value="20"
+                                            color="#FF9D01"></v-progress-linear></v-col>
+                                    <v-col cols="2"> <span class="marks">02/10</span></v-col>
+                                </v-row>
+                                <v-row class="progressWrapper">
+                                    <v-col cols="3"><span class="detailsHeadings">Skipped</span></v-col>
+                                    <v-col class="progres-col"><v-progress-linear model-value="20"
+                                            color="#183C6F"></v-progress-linear></v-col>
+                                    <v-col cols="2"> <span class="marks">02/10</span></v-col>
+                                </v-row>
+                            </div>
+                        </v-card>
+                    </div>
+                </v-col>
+            </v-row>
+            <FooterCom class="footerInTestScreen" />
         </div>
     </div>
 </template>
@@ -84,6 +112,7 @@ import { Doughnut } from 'vue-chartjs'
 // import * as chartConfig from './chartConfig.js'
 import down from '../assets/imgs/down.png'
 import { data, options } from './chartConfig'
+import FooterCom from '../components/helperComponents/FooterCom.vue'
 
 
 ChartJS.register(ArcElement, Tooltip, Legend)
@@ -91,10 +120,15 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 export default {
     components: {
         CounterClock: CounterClock,
-        Doughnut
+        Doughnut,
+        FooterCom: FooterCom
+
     },
     data() {
         return {
+            correctWidth: '80%', // Set the initial width dynamically
+            wrongWidth: '10%',   // Set the initial width dynamically
+            skippedWidth: '10%',
             questions: [
                 {
                     question: "What is an array?",
@@ -151,6 +185,7 @@ export default {
 
 
 
+
         };
     },
     computed: {
@@ -194,17 +229,24 @@ export default {
 .questionTest {
     color: #FFF;
     font-family: Open Sans;
-    font-size: 36px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     margin-bottom: 30px;
 }
-
+.positioningForTest{
+    position: absolute;
+    bottom: 15px;
+    right: 0;
+    left: 0;
+}
 .chartSpan {
     /* background-color: red; */
-    width: 500px;
-    height: 500px;
+    /* width: 500px;
+    height: 500px; */
+    width: 300px;
+    height: 300px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -217,6 +259,46 @@ export default {
 
 .myChart {
     z-index: 5;
+    height: 250px !important;
+    width: 250px !important;
+}
+
+.progressCard {
+    max-width: 663px;
+    border-radius: 10px;
+    border: 2px solid rgba(75, 154, 250, 0.20);
+    background: #071E40;
+    box-shadow: 0px 0px 12px 0px rgba(36, 36, 36, 0.25);
+    padding: 25px;
+    margin: auto;
+}
+
+.detailGraphHolder {
+    margin-top: 25px;
+}
+
+.marks {
+    color: #4B9AFA;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.detailsHeadings {
+    color: #F5F5F5;
+    font-family: Open Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.detailGraphCol {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 .chartPercentage {
@@ -229,57 +311,25 @@ export default {
     line-height: 38px;
     position: absolute;
     background-color: white;
-    width: 240px;
-    height: 240px;
+    width: 150px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.progress {
-    display: flex;
-    width: 100%;
-    height: 51px;
-    margin: 5% 0;
+.progres-col {
+    margin: auto 0;
 }
 
-.progressTxt {
-    color: #F5F5F5;
-    font-family: Open Sans;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.progressWrapper {
+    /* display: flex; */
 }
-
-.correct {
-    background-color: #4B9AFA;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.wrong {
-    background-color: #FF9D01;
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.skipped {
-    background-color: #183C6F;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .testScreen-wrapper {
     max-width: 85vw;
     width: 100%;
-    padding-top: 5%;
+    padding-top: 2%;
+    position: relative;
 }
 
 .clockTimerWrapper {
@@ -295,7 +345,7 @@ export default {
 .testBannerTxt {
     color: #F5F5F5;
     font-family: Open Sans;
-    font-size: 36px;
+    font-size: 32px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -305,14 +355,14 @@ export default {
 .testSubTxt {
     color: #F5F5F5;
     font-family: Open Sans;
-    font-size: 20px;
+    font-size: 17px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
 .testScreenDivider {
-    margin: 2% 0 4% 0;
+    margin: 20px 0 20px 0;
 }
 
 .clock-img {

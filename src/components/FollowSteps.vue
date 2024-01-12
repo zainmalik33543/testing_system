@@ -5,8 +5,21 @@
             <div v-if="!showReview" class="flexWrapper-div">
                 <div class="headingWrapper" v-motion :initial="{ opacity: 0 }"
                     :enter="{ opacity: 1, transition: { duration: 300, delay: 200, ease: 'easeIn' } }">
-                    <p class="p-tags stepsHead">Follow the <span class="stepsHead-span">Steps</span></p>
-                    <p class="p-tags stepsSubHead">Follow the required 4 steps to start your journey...</p>
+                    <v-row>
+                        <v-col cols="6" lg="6" md="6" sm="12">
+                            <div>
+                                <p class="p-tags stepsHead">Follow the <span class="stepsHead-span">Steps</span></p>
+                                <p class="p-tags stepsSubHead">Follow the required 4 steps to start your journey...</p>
+                            </div>
+                        </v-col>
+                        <v-col cols="6" lg="6" md="6" sm="12">
+                            <div class="previewBtnHolder">
+                                <router-link to="/preview">
+                                    <v-btn class="previewBTN">Previous Record</v-btn>
+                                </router-link>
+                            </div>
+                        </v-col>
+                    </v-row>
                 </div>
             </div>
             <!-- ===============testing========= -->
@@ -121,79 +134,112 @@
                         <!-- </template> -->
                     </v-stepper>
                 </div>
+
             </div>
+            <div v-if="!showReview" style="margin: 0 auto;" class="headingWrapper">
+                <div>
+                    <FooterCom />
+                </div>
+            </div>
+
             <!-- ==============testing=========== -->
             <div v-if="showReview" class="flexWrapper-div">
                 <div>
-                    <div class="headingWrapper">
+                    <div class="headingWrapper" v-motion :initial="{ opacity: 0 }"
+                        :enter="{ opacity: 1, transition: { duration: 300, delay: 200, ease: 'easeIn' } }">
                         <p class="p-tags stepsHead">Review <span class="stepsHead-span">Details</span></p>
                         <p class="p-tags stepsSubHead">Follow are the details</p>
                         <v-divider class="stepperTopDivider" color="white"></v-divider>
                         <div>
                             <v-row class="reviewRow">
                                 <v-col cols="4" md="6" sm="6">
-                                    <div class="reviewCardDiv">
+                                    <div class="reviewCardDiv" v-motion :initial="{ opacity: 0 }"
+                                        :enter="{ opacity: 1, transition: { duration: 300, delay: 300, ease: 'easeIn' } }">
                                         <span class="profileSpanner">
                                             <img :src="profUrl" alt="">
                                         </span>
                                         <div class="reviewCardtxtHolder">
                                             <p class="label">Interviewee name </p>
-                                            <p class="labelTxt">John Wick
-                                                <!-- {{ intervieweeName }} -->
+                                            <p class="labelTxt">
+                                                <!-- John Wick -->
+                                                {{ intervieweeName }}
                                             </p>
                                         </div>
+                                        <span>
+                                            <v-btn  @click="editIntervieweeName">edit</v-btn>
+                                        </span>
                                     </div>
                                 </v-col>
                                 <v-col cols="4" md="6" sm="6">
-                                    <div class="reviewCardDiv">
+                                    <div class="reviewCardDiv" v-motion :initial="{ opacity: 0 }"
+                                        :enter="{ opacity: 1, transition: { duration: 300, delay: 400, ease: 'easeIn' } }">
                                         <span class="profileSpanner">
                                             <img :src="profUrl" alt="">
                                         </span>
                                         <div class="reviewCardtxtHolder">
-                                            <p class="label">Interviewee name </p>
-                                            <p class="labelTxt">Peter k
-                                                <!-- {{ interviewerName }} -->
+                                            <p class="label">Interviewer name </p>
+                                            <p class="labelTxt">
+                                                <!-- Peter k -->
+                                                {{ interviewerName }}
                                             </p>
                                         </div>
+                                        <span>
+                                            <v-btn @click="editInterviewerName">edit</v-btn>
+                                        </span>
                                     </div>
                                 </v-col>
                                 <v-col cols="4" md="6" sm="6">
-                                    <div class="reviewCardDiv">
+                                    <div class="reviewCardDiv" v-motion :initial="{ opacity: 0 }"
+                                        :enter="{ opacity: 1, transition: { duration: 300, delay: 500, ease: 'easeIn' } }">
                                         <span class="profileSpanner">
                                             <img :src="profUrl" alt="">
                                         </span>
                                         <div class="reviewCardtxtHolder">
-                                            <p class="label">Interviewee name </p>
-                                            <p class="labelTxt">Php Developer
-                                                <!-- {{ positionAppliedFor }} -->
+                                            <p class="label">Position Applied For </p>
+                                            <p class="labelTxt">
+                                                <!-- Php Developer -->
+                                                {{ positionAppliedFor }}
                                             </p>
                                         </div>
+                                        <span>
+                                            <v-btn  @click="editPosition">edit</v-btn>
+                                        </span>
                                     </div>
                                 </v-col>
                                 <v-col cols="4" md="6" sm="6">
-                                    <div class="reviewCardDiv">
+                                    <div class="reviewCardDiv" v-motion :initial="{ opacity: 0 }"
+                                        :enter="{ opacity: 1, transition: { duration: 300, delay: 600, ease: 'easeIn' } }">
                                         <span class="profileSpanner">
                                             <img :src="profUrl" alt="">
                                         </span>
                                         <div class="reviewCardtxtHolder">
-                                            <p class="label">Interviewee name </p>
-                                            <p class="labelTxt">2 Years
-                                                <!-- {{ experience }} -->
+                                            <p class="label">Experience </p>
+                                            <p class="labelTxt">
+                                                <!-- 2 Years -->
+                                                {{ experience }}
                                             </p>
                                         </div>
+                                        <span>
+                                            <v-btn  @click="editExperience">edit</v-btn>
+                                        </span>
                                     </div>
                                 </v-col>
                                 <v-col cols="4" md="6" sm="6">
-                                    <div class="reviewCardDiv">
+                                    <div class="reviewCardDiv" v-motion :initial="{ opacity: 0 }"
+                                        :enter="{ opacity: 1, transition: { duration: 300, delay: 700, ease: 'easeIn' } }">
                                         <span class="profileSpanner">
                                             <img :src="profUrl" alt="">
                                         </span>
                                         <div class="reviewCardtxtHolder">
-                                            <p class="label">Interviewee name </p>
-                                            <p class="labelTxt">tgi@gmail.com
-                                                <!-- {{ email }} -->
+                                            <p class="label">Email </p>
+                                            <p class="labelTxt">
+                                                <!-- tgi@gmail.com -->
+                                                {{ email }}
                                             </p>
                                         </div>
+                                        <span>
+                                            <v-btn  @click="editEmail">edit</v-btn>
+                                        </span>
                                     </div>
                                 </v-col>
                             </v-row>
@@ -203,6 +249,7 @@
                                 </router-link>
                             </div>
                         </div>
+                        <FooterCom />
                     </div>
 
                 </div>
@@ -212,16 +259,18 @@
 </template>
   
 <script>
+import FooterCom from '../components/helperComponents/FooterCom.vue'
 import StarterScreen from './StarterScreen.vue';
 import prof from '../assets/imgs/profile.png';
 
 export default {
     components: {
         'StarterScreen': StarterScreen,
+        FooterCom: FooterCom
     },
     data: () => ({
         profUrl: prof,
-        showStarterScreen: true,
+        showStarterScreen: false,
         shipping: 0,
         showReview: false,
         step: 1,
@@ -255,6 +304,31 @@ export default {
             if (this.step < this.items.length) {
                 this.step++;
             }
+        },
+        editIntervieweeName() {
+            this.showReview = false
+            this.step = this.items.indexOf('Interviewee Name') + 1;
+            window.scrollTo(0, 0);
+        },
+        editInterviewerName() {
+            this.showReview = false
+            this.step = this.items.indexOf('Interviewer Name') + 1;
+            window.scrollTo(0, 0);
+        },
+        editPosition() {
+            this.showReview = false
+            this.step = this.items.indexOf('Position applied for') + 1;
+            window.scrollTo(0, 0);
+        },
+        editExperience() {
+            this.showReview = false
+            this.step = this.items.indexOf('Experience') + 1;
+            window.scrollTo(0, 0);
+        },
+        editEmail() {
+            this.showReview = false
+            this.step = this.items.indexOf('Email') + 1;
+            window.scrollTo(0, 0);
         },
     },
     computed: {
@@ -313,6 +387,27 @@ export default {
     margin-bottom: 25px;
 }
 
+.previewBtnHolder {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 100%;
+}
+
+.previewBTN {
+    border-radius: 60px;
+    background: #4B9AFA;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    height: 62px;
+}
+
 .stepperFirstHead-txt {
     font-weight: 700;
 }
@@ -339,6 +434,8 @@ export default {
     width: 168px !important;
     height: 62px !important;
 }
+
+
 
 .stepperFirstHead {
     color: #F5F5F5;
@@ -492,6 +589,10 @@ export default {
 }
 </style>
 <style>
+.textField .v-field__field .v-field__input {
+    padding-left: 20px !important;
+}
+
 .v-stepper-actions {
     max-height: 100px;
     /* background: red !important; */
@@ -501,7 +602,7 @@ export default {
 }
 
 .v-stepper-item {
-    margin: 5% 0 0 0;
+    /* margin: 5% 0 0 0; */
 }
 
 .v-stepper-item--selected .v-stepper-item__title {
@@ -566,6 +667,10 @@ export default {
     background-image: url(../assets/imgs/mail.svg) !important;
 }
 
+.v-stepper-header {
+    overflow: hidden;
+}
+
 .v-stepper-item--selected .v-avatar {
     /* background-color: #4B9AFA !important; */
     background: rgba(75, 154, 250, 0.8) !important;
@@ -573,6 +678,15 @@ export default {
 
 .v-stepper-item .v-avatar {
     background: rgba(75, 154, 250, 0.1);
+}
+
+.v-stepper-item {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.v-stepper-item--selected {
+    transform: scale(1.1);
 }
 
 .v-btn--disabled.v-btn--variant-elevated,

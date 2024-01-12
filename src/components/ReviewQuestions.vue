@@ -2,7 +2,8 @@
     <div class="outerMostDiv-Review">
         <!-- <div class="expansionWrapper"> -->
         <div class="expansionWrapper">
-            <div class="headingWrapper">
+            <div class="headingWrapper" v-motion :initial="{ opacity: 0 }"
+                :enter="{ opacity: 1, transition: { duration: 300, delay: 200, ease: 'easeIn' } }">
                 <h1 class="reviewHeading">Review <span class="reviewHeading-span">Questions</span></h1>
                 <p class="reviewSubPara">Follow the required 4 steps to start you journey...</p>
                 <v-divider class="divider"></v-divider>
@@ -173,23 +174,34 @@
                     </v-expansion-panel-text>
                 </v-expansion-panel>
             </v-expansion-panels>
+
             <div class="reviewDivBtn">
                 <router-link to="/start">
                     <v-btn class="nextBtn">NEXT</v-btn>
                 </router-link>
             </div>
         </div>
+        <div style="margin: 0 auto;" class="headingWrapper">
+            <div>
+                <FooterCom />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+import FooterCom from '../components/helperComponents/FooterCom.vue'
 export default {
     data() {
         return {
             radioValue1: null,
             radioValue2: null,
         };
+    },
+    components: {
+        FooterCom: FooterCom
     }
+
 }
 </script>
 
@@ -197,6 +209,7 @@ export default {
 .outerMostDiv-Review {
     background: #00102C;
     height: 100%;
+    padding: 0 0 20px 0;
 }
 
 .reviewQuestion {
@@ -260,6 +273,10 @@ export default {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.headingWrapper {
+    width: 85vw;
 }
 
 .expansionWrapper {
