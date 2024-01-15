@@ -41,7 +41,7 @@
                     questions.length - 1 ? "Finished" :
                     "Next" }}</v-btn>
             </div>
-            <FooterCom class="positioningForTest"/>
+            <FooterCom class="positioningForTest" />
         </div>
         <div v-else class="testScreen-wrapper">
             <div class="headingWrapper">
@@ -50,7 +50,7 @@
                         <p class="p-tags stepsHead">Final <span class="stepsHead-span">Result</span></p>
                         <p class="p-tags stepsSubHead">Your result and analytics</p>
                     </v-col>
-                    <v-col cols="12" lg="6" md="12">
+                    <v-col cols="6">
                         <div class="passedWrapper">
                             <!-- <p class="passed-failed">PASSED</p> -->
                             <img :src="down" class="download" />
@@ -235,12 +235,14 @@ export default {
     line-height: normal;
     margin-bottom: 30px;
 }
-.positioningForTest{
+
+.positioningForTest {
     position: absolute;
     bottom: 15px;
     right: 0;
     left: 0;
 }
+
 .chartSpan {
     /* background-color: red; */
     /* width: 500px;
@@ -325,6 +327,7 @@ export default {
 .progressWrapper {
     /* display: flex; */
 }
+
 .testScreen-wrapper {
     max-width: 85vw;
     width: 100%;
@@ -465,5 +468,4 @@ export default {
 
 .spantag {
     color: #4B9AFA;
-}
-</style>
+}</style>

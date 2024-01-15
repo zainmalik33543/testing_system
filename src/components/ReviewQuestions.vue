@@ -20,14 +20,14 @@
                     <v-expansion-panel-text>
                         <div style="color: white;">
                             <v-radio-group v-model="radioValue2">
-                                <v-row>
-                                    <v-col cols="6"><v-radio color="#4B9AFA"
+                                <v-row class="questionRow">
+                                    <v-col cols="12" sm="12" lg="6" md="6"><v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option1"></v-radio>
                                         <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option2"></v-radio></v-col>
-                                    <v-col cols="6"> <v-radio color="#4B9AFA"
+                                    <v-col cols="12" sm="12" lg="6" md="6"> <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option3"></v-radio>
                                         <v-radio color="#4B9AFA"
@@ -47,14 +47,14 @@
                     <v-expansion-panel-text>
                         <div style="color: white;">
                             <v-radio-group v-model="radioValue2">
-                                <v-row>
-                                    <v-col cols="6"><v-radio color="#4B9AFA"
+                                <v-row class="questionRow">
+                                    <v-col cols="12" sm="12" lg="6" md="6"><v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option1"></v-radio>
                                         <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option2"></v-radio></v-col>
-                                    <v-col cols="6"> <v-radio color="#4B9AFA"
+                                    <v-col cols="12" sm="12" lg="6" md="6"> <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option3"></v-radio>
                                         <v-radio color="#4B9AFA"
@@ -74,14 +74,14 @@
                     <v-expansion-panel-text>
                         <div style="color: white;">
                             <v-radio-group v-model="radioValue2">
-                                <v-row>
-                                    <v-col cols="6"><v-radio color="#4B9AFA"
+                                <v-row class="questionRow">
+                                    <v-col cols="12" sm="12" lg="6" md="6"><v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option1"></v-radio>
                                         <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option2"></v-radio></v-col>
-                                    <v-col cols="6"> <v-radio color="#4B9AFA"
+                                    <v-col cols="12" sm="12" lg="6" md="6"> <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option3"></v-radio>
                                         <v-radio color="#4B9AFA"
@@ -101,14 +101,14 @@
                     <v-expansion-panel-text>
                         <div style="color: white;">
                             <v-radio-group v-model="radioValue2">
-                                <v-row>
-                                    <v-col cols="6"><v-radio color="#4B9AFA"
+                                <v-row class="questionRow">
+                                    <v-col cols="12" sm="12" lg="6" md="6"><v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option1"></v-radio>
                                         <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option2"></v-radio></v-col>
-                                    <v-col cols="6"> <v-radio color="#4B9AFA"
+                                    <v-col cols="12" sm="12" lg="6" md="6"> <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option3"></v-radio>
                                         <v-radio color="#4B9AFA"
@@ -128,14 +128,14 @@
                     <v-expansion-panel-text>
                         <div style="color: white;">
                             <v-radio-group v-model="radioValue2">
-                                <v-row>
-                                    <v-col cols="6"><v-radio color="#4B9AFA"
+                                <v-row class="questionRow">
+                                    <v-col cols="12" sm="12" lg="6" md="6"><v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option1"></v-radio>
                                         <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option2"></v-radio></v-col>
-                                    <v-col cols="6"> <v-radio color="#4B9AFA"
+                                    <v-col cols="12" sm="12" lg="6" md="6"> <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option3"></v-radio>
                                         <v-radio color="#4B9AFA"
@@ -155,14 +155,14 @@
                     <v-expansion-panel-text>
                         <div style="color: white;">
                             <v-radio-group v-model="radioValue2">
-                                <v-row>
-                                    <v-col cols="6"><v-radio color="#4B9AFA"
+                                <v-row class="questionRow">
+                                    <v-col cols="12" lg="6" sm="12"  md="6"><v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option1"></v-radio>
                                         <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option2"></v-radio></v-col>
-                                    <v-col cols="6"> <v-radio color="#4B9AFA"
+                                    <v-col cols="12" sm="12" lg="6" md="6"> <v-radio color="#4B9AFA"
                                             label="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                                             value="option3"></v-radio>
                                         <v-radio color="#4B9AFA"
@@ -288,6 +288,9 @@ export default {
 .expensionQuestion {
     width: 85vw;
 
+}
+.questionRow{
+    padding: 0 5%;
 }
 
 .expensionQuestion .v-expansion-panel {
